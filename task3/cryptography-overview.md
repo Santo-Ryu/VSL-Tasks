@@ -1,4 +1,4 @@
-![image](https://hackmd.io/_uploads/SJ3a0Fp7Zg.png)
+![alt text](images/image.png)
 ---
 # Tổng quan về mật mã học
 
@@ -15,9 +15,9 @@ Mật mã học gồm 2 mảng chính:
     - Mã hóa bất đối xứng: RSA, ECC
     - Hàm băm (hash): SHA-256, SHA-3
     - Chữ ký số (Digital Signature)
-:::info
-Cryptography tập trung vào xây dựng các hệ thống bảo mật an toàn.
-:::
+
+> Cryptography tập trung vào xây dựng các hệ thống bảo mật an toàn.
+
 2. 🧠Cryptanalysis
 - Nghiên cứu điểm yếu của các hệ thống bảo mật
 - Tìm cách:
@@ -30,9 +30,8 @@ Cryptography tập trung vào xây dựng các hệ thống bảo mật an toàn
     - Chosen-plaintext / Chosen-ciphertext
     - Side-channel (timming, power, cache)
     - Mathematical (khai thác điểm yếu toán học)
-:::info
-Cryptanalysis không phải để phá hoại mà để kiểm tra độ an toàn, cải tiến và nâng cấp hệ thống mã hóa.
-:::
+
+>Cryptanalysis không phải để phá hoại mà để kiểm tra độ an toàn, cải tiến và nâng cấp hệ thống mã hóa.
 
 ## 🎭Mối quan hệ giữa Cryptography & Cryptanalysis
 
@@ -52,9 +51,8 @@ Trong quá tình phát triển 2 mảng này có sự bổ trợ rất lớn v�
 - Non-repudiation (Chống chối bỏ - chống phủ nhận)
 
 Không chỉ `ngăn bên thứ ba đọc được`, mà còn đảm bảo tính toàn vẹn và xác thực của dữ liệu.
-:::info
-Đây chính là cốt lõi trong mô hình hình CIA + Authentication + Non-repudiation của an toàn thông tin
-:::
+
+> Đây chính là cốt lõi trong mô hình hình CIA + Authentication + Non-repudiation của an toàn thông tin
 
 ## 🧩Vai trò
 * Là nền tảng cho các hệ thống an toàn thông tin hiện đại
