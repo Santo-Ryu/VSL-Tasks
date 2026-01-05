@@ -117,20 +117,75 @@ Có R = 17,
 ## 3. Vigenère
 ![alt text](images/vigenère.png)
 ### 🔹Nguyên lý hoạt động
+- Là mật mã thay thế đa bảng (polyalphabetic cipher)
+- Sử dụng từ khóa (key) để xác định độ dịch cho từng ký tự
+- Mỗi chữ cái trong bản rõ được mã hóa bằng một Caesar Cipher khác nhau dựa trên ký tự tương ứng của khóa
+
 ### 🔹Mã hóa
+- Lặp lại cho đến khi độ dài bằng bản rõ
+- C = (P + K) mod 26
+
+> Trong đó
+> - P: ký tự bản rõ
+> - K: ký tự khóa
+> - C: ký tự mã hóa
+
 ### 🔹Giải mã
+- Sử dụng cùng khóa đã dùng để mã hóa
+- P = (C - K) mod 26
+
 ### 🔹Điểm yếu bảo mật
+- Nếu khóa ngắn, có thể bị phá bằng Kasiski Examination hoặc Frequency Analysis.
+- Không an toàn trước các phương pháp tấn công hiện đại.
+- Chỉ mang tính lịch sử và học thuật, không dùng trong thực tế.
 
 ## 4. Playfair
 ![alt text](images/playfair.png)
 ### 🔹Nguyên lý hoạt động
+- Là mật mã thay thế đa ký tự (digraph cipher).
+- Sử dụng bảng 5×5 tạo từ khóa (gộp I/J).
+- Mã hóa theo từng cặp chữ cái thay vì từng ký tự đơn lẻ.
+
 ### 🔹Mã hóa
+- Chia rõ thành các cặp chữ cái
+- Quy tắc mã hóa: 
+    - Cùng hàng -> Lấy chữ bên phải
+    - Cùng cột -> Lấy chữ bên dưới
+    - Khác hàng & cột -> tạo hình chữ nhật và lấy chữ cùng hàng
+- Thêm ký tự đệm (thường là X) nếu cần
+
 ### 🔹Giải mã
+- Áp dụng ngược lại các quy tắc mã hóa
+    - Cùng hàng -> lấy chữ bên trái
+    - Cùng cột -> lấy chữ bên trên
+    - Hình chữ nhật -> lấy chữ tương ứng
+-  Loại bỏ ký tự đệm sau khi giải mã
+
 ### 🔹Điểm yếu bảo mật
+- Dễ bị phá bằng phân tích tần suất cặp chữ.
+- Không an toàn trước tấn công hiện đại.
+- Không phù hợp cho bảo mật thực tế.
 
 ## 5. Hill
 ![alt text](images/hill.png)
 ### 🔹Nguyên lý hoạt động
+- Là mật mã thay thế đa ký tự dựa trên đại số tuyến tính.
+- Sử dụng ma trận khóa vuông kích thước n×n.
+- Mã hóa theo từng khối ký tự.
+
 ### 🔹Mã hóa
+- Chuyển chữ cái thành số (A=0, B=1, ..., Z=25).
+- Nhân vector bản rõ với ma trận khóa:
+    - C = K × P mod 26
+- Kết quả được chuyển ngược lại thành chữ cái
+
 ### 🔹Giải mã
-### 🔹Điểm yếu bảo mật=
+- Tính ma trân nghịch đảo của khóa (mod 26)
+- Công thức:
+    - P = K⁻¹ × C mod 26
+- Chỉ giải mã được nếu ma trận khóa khả nghịch
+
+### 🔹Điểm yếu bảo mật
+- Dễ bị phá nếu có plaintext–ciphertext pairs.
+- Quản lý khóa phức tạp.
+- Không an toàn trong các hệ thống hiện đại.
