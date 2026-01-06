@@ -1,5 +1,6 @@
-![alt text](images/cryptography-overview.png)
+![alt text](../images/task3/cryptography-overview.png)
 ---
+
 # Tổng quan về mật mã học
 
 ## 📘Mật mã học là gì? 

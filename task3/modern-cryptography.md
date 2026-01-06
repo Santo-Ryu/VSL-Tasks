@@ -1,141 +1,138 @@
-# Tìm hiểu một số loại mật mã học cổ điển
+![alt text](../images/task3/modern-cryptography.png)
+---
+# Thuật toán mật mã hiện đại
+Thuật toán mã hóa hiện đại là các thuật toán mật mã được thiết kế để bảo vệ dữ liệu trong môi trường số ngày nay, đảm bảo các mục tiêu cốt lõi:
+- 🔒 Bí mật (Confidentiality)
+- ✔️ Toàn vẹn (Integrity)
+- 👤 Xác thực (Authentication)
+- 🚫 Không chối bỏ (Non-repudiation)
 
-| Thuật toán | Thuộc loại                  | Giải thích                    |
-| ---------- | --------------------------- | ----------------------------- |
-| Caesar     | Substitution                | Dịch chữ cái cố định          |
-| Affine     | Substitution                | Công thức toán học tuyến tính |
-| Vigenère   | Polyalphabetic Substitution | Dùng nhiều bảng Caesar        |
-| Playfair   | Digraph Substitution        | Mã hóa theo cặp chữ cái       |
-| Hill       | Matrix-based Substitution   | Thay thế dựa trên ma trận     |
+Chúng được xây dựng dựa trên toán học hiện đại, đã qua phân tích bảo mật nghiêm ngặt, và được sử dụng rộng rãi trong Internet, ngân hàng, blockchain, VPN, HTTPS,…
 
-Chúng ta sẽ tìm hiểu 5 loại thuật toán này dựa trên các tiêu chí sau:
 
-* Nguyên lý hoạt động
-* Cách thức mã hóa – giải mã
-* Các điểm yếu bảo mật
+## Thuật toán mã hóa hiện đại được chia làm 2 loại chính 👇
+### 1. 🔐 Mã hóa đối xứng (Symmetric Encryption)
+
+- Dùng 1 khóa duy nhất để mã hóa và giải mã
+
+📌 Đặc điểm:
+- Tốc độ rất nhanh
+- Phù hợp mã hóa dữ liệu lớn
+- Khó ở khâu chia sẻ khóa
+
+📌 Ví dụ:
+- AES
+- DES (không còn an toàn)
+- 3DES
+- ChaCha20
+
+### 2. 🔑 Mã hóa bất đối xứng (Asymmetric Encryption)
+
+Dùng 2 khóa:
+- Khóa công khai (Public Key)
+- Khóa bí mật (Private Key)
+
+📌 Đặc điểm:
+- Chậm hơn đối xứng
+- Giải quyết vấn đề phân phối khóa
+- Dùng cho trao đổi khóa, chữ ký số
+
+📌 Ví dụ:
+- RSA
+- ECC
+- ElGamal
+
+### 🔄 Bổ sung "Hàm băm mật mã" (không phải mã hóa nhưng rất quan trọng)
+- Hàm băm mật mã (Cryptographic Hash)
+- SHA-256, SHA-3
+- MD5, SHA-1 (không an toàn)
+
+👉 Không dùng để giải mã, chỉ để kiểm tra toàn vẹn, lưu mật khẩu.
 
 ---
 
-## 1. Caesar Cipher
+> Tại sao gọi hàm băm mật mã không phải là mã hóa?
 
-### 🔹 Nguyên lý hoạt động
+👉 Vì hàm băm KHÔNG thể giải mã ngược lại dữ liệu ban đầu.
 
-Caesar là thuật toán **thay thế đơn bảng (monoalphabetic substitution)**. Mỗi chữ cái trong bản rõ được dịch đi một số bước cố định trong bảng chữ cái.
+🔑 So sánh trực tiếp: Mã hóa vs Hàm băm
+| Tiêu chí         | Mã hóa (Encryption)         | Hàm băm (Hash)        |
+| ---------------- | --------------------------- | --------------------- |
+| Có khóa không    | ✅ Có khóa                   | ❌ Không khóa          |
+| Có giải mã không | ✅ Có thể giải mã            | ❌ Không thể đảo ngược |
+| Mục đích         | Bảo mật dữ liệu             | Kiểm tra toàn vẹn     |
+| Đầu ra           | Có thể phục hồi dữ liệu gốc | Không thể phục hồi    |
+| Ví dụ            | AES, RSA                    | SHA-256, SHA-3        |
 
-### 🔹 Mã hóa – Giải mã
+## Tìm hiểu một số thuật toán mật mã hiện đại
+### 1. Mã hóa đối xứng (DES, AES)
+#### 1.1. DES (Data Encryption Standard)
+![alt text](../images/task3/DES.png)
+DES là một trong những thuật toán mã hóa đối xứng đầu tiên được chuẩn hóa và sử dụng rộng rãi trong quá khứ.
 
-* Mã hóa:
-  [ E(x) = (x + k) \bmod 26 ]
-* Giải mã:
-  [ D(x) = (x - k) \bmod 26 ]
+- Độ dài khóa: 56 bit
+- Hoạt động trên từng khối dữ liệu 64 bit
+- Dựa trên cấu trúc Feistel
 
-Ví dụ với k = 3:
-A → D, B → E, C → F
+Nhược điểm:
+- Độ dài khóa ngắn → dễ bị tấn công brute-force
+- Hiện nay không còn được xem là an toàn
 
-### 🔹 Điểm yếu bảo mật
+👉 DES hiện chỉ mang tính nghiên cứu và lịch sử, không nên sử dụng trong hệ thống hiện đại.
 
-* Không gian khóa rất nhỏ (25 khóa)
-* Dễ bị brute-force
-* Phân tích tần suất phá được ngay
+#### 1.2. AES (Advanced Encryption Standard)
+![alt text](../images/task3/AES.png)
+AES là thuật toán mã hóa đối xứng hiện đại, được NIST chọn làm tiêu chuẩn thay thế DES.
 
----
+- Độ dài khóa: 128 bit, 192 bit, 256 bit
+- Kích thước khối: 128 bit
+- Cấu trúc: Substitution–Permutation Network (SPN)
 
-## 2. Affine Cipher
+Ưu điểm:
+- Mức độ bảo mật cao
+- Tốc độ nhanh, hiệu quả
+- Được sử dụng rộng rãi trong thực tế
 
-### 🔹 Nguyên lý hoạt động
+Ứng dụng:
+- HTTPS
+- VPN
+- Wi-Fi (WPA2, WPA3)
+- Mã hóa ổ đĩa, dữ liệu hệ thống
 
-Affine là mở rộng của Caesar, sử dụng hàm tuyến tính để thay thế ký tự.
+👉 AES là thuật toán mã hóa đối xứng phổ biến và an toàn nhất hiện nay.
 
-### 🔹 Mã hóa – Giải mã
+### 2. Mã hóa bất đối xứng RSA (Revest-Shamir-Adleman)
+Mã hóa bất đối xứng là phương pháp sử dụng hai khóa khác nhau:
+- Khóa công khai (Public Key)
+- Khóa bí mật (Private Key)
 
-* Mã hóa:
-  [ E(x) = (a \cdot x + b) \bmod 26 ]
-* Giải mã:
-  [ D(x) = a^{-1}(x - b) \bmod 26 ]
+Dữ liệu được mã hóa bằng khóa công khai chỉ có thể được giải mã bằng khóa bí mật tương ứng.
 
-Trong đó:
-
-* a phải **nguyên tố cùng nhau với 26**
-
-### 🔹 Điểm yếu bảo mật
-
-* Vẫn là thay thế đơn bảng
-* Bị phá bằng phân tích tần suất
-* Không an toàn khi biết một vài cặp plaintext–ciphertext
-
----
-
-## 3. Vigenère Cipher
-
-### 🔹 Nguyên lý hoạt động
-
-Vigenère là thuật toán **đa bảng (polyalphabetic substitution)**, dùng một từ khóa để thay đổi bảng Caesar theo từng ký tự.
-
-### 🔹 Mã hóa – Giải mã
-
-* Mỗi ký tự plaintext được mã hóa bằng một Caesar Cipher khác nhau
-* Khóa được lặp lại cho đến khi đủ độ dài bản rõ
-
-Ví dụ:
-Plaintext: ATTACK
-Key:       LEMONL
-
-### 🔹 Điểm yếu bảo mật
-
-* Có chu kỳ khóa
-* Bị phá bằng **Kasiski Examination** hoặc **Index of Coincidence**
-* Không an toàn trước máy tính hiện đại
+Đặc điểm:
+- Giải quyết được vấn đề phân phối khóa
+- Bảo mật cao
+- Tốc độ chậm hơn mã hóa đối xứng
 
 ---
 
-## 4. Playfair Cipher
+RSA là thuật toán mã hóa bất đối xứng phổ biến nhất hiện nay, dựa trên độ khó của bài toán phân tích số nguyên lớn thành thừa số nguyên tố.
 
-### 🔹 Nguyên lý hoạt động
+- Độ dài khóa phổ biến: 2048 bit, 3072 bit
 
-Playfair mã hóa **theo cặp chữ cái (digraph)** bằng cách sử dụng bảng 5×5 (gộp I/J).
+- Có thể dùng để:
+    - Mã hóa dữ liệu
+    - Trao đổi khóa
+    - Tạo chữ ký số
 
-### 🔹 Mã hóa – Giải mã
+Ứng dụng:
+- HTTPS (SSL/TLS)
+- Chữ ký số
+- Email bảo mật
+- Hệ thống xác thực
 
-* Chia plaintext thành các cặp ký tự
-* Áp dụng 3 quy tắc:
+👉 Trong thực tế, RSA thường được dùng để trao đổi khóa, sau đó dữ liệu sẽ được mã hóa bằng AES để tăng hiệu năng.
 
-  * Cùng hàng
-  * Cùng cột
-  * Hình chữ nhật
-
-### 🔹 Điểm yếu bảo mật
-
-* Không mã hóa từng ký tự đơn
-* Dễ bị phá với ciphertext dài
-* Không phù hợp cho dữ liệu nhị phân
-
----
-
-## 5. Hill Cipher
-
-### 🔹 Nguyên lý hoạt động
-
-Hill Cipher sử dụng **đại số tuyến tính**, mã hóa theo khối ký tự bằng phép nhân ma trận.
-
-### 🔹 Mã hóa – Giải mã
-
-* Mã hóa:
-  [ C = K \cdot P \bmod 26 ]
-* Giải mã:
-  [ P = K^{-1} \cdot C \bmod 26 ]
-
-Trong đó K là ma trận khóa khả nghịch.
-
-### 🔹 Điểm yếu bảo mật
-
-* Dễ bị tấn công nếu biết plaintext
-* Không có tính ngẫu nhiên
-* Không chống được known-plaintext attack
-
----
-
-## 📌 Nhận xét chung
-
-* Các thuật toán mật mã cổ điển **không còn an toàn** trong thực tế
-* Có giá trị lớn trong **giảng dạy và nghiên cứu nền tảng mật mã học**
-* Là tiền đề cho các thuật toán mật mã hiện đại như AES, RSA
+> 🔎 Tổng kết
+Mã hóa đối xứng (DES, AES): nhanh, dùng cho dữ liệu lớn
+Mã hóa bất đối xứng (RSA): an toàn trong phân phối khóa
+Các hệ thống hiện đại thường kết hợp cả hai loại để đạt hiệu quả và bảo mật cao

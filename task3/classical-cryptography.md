@@ -1,4 +1,4 @@
-![alt text](images/classical-cryptography.png)
+![alt text](../images/task3/classical-cryptography.png)
 ---
 # Thuật toán mật mã cổ điển
 Thuật toán mật mã cổ điển là các phương pháp mã hóa ra đời sớm, chủ yếu trước thời kỳ xuất hiện máy tính hiện đại, nó dựa trên toán học đơn giản và xử lý ký tự (chữ cái), thường để che giấu nội dung hơn là bảo mật.
@@ -29,7 +29,7 @@ Chúng ta sẽ tìm hiểu 5 loại thuật toán này dựa trên các tiêu ch
 - Các điểm yếu bảo mật
 
 ## 1. Caesar
-![alt text](images/caesar.png)
+![alt text](../images/task3/caesar.png)
 ### 🔹Nguyên lý hoạt động:  
 Caesar là thuật toán thay thế đơn bảng. Mỗi chữ cái được dịch đi một số bước cố định so với bảng chữ cái gốc.
 
@@ -74,7 +74,7 @@ Ví dụ:
 - Phân tích tần suất phá được ngay
 
 ## 2. Affine Cipher
-![alt text](images/affine.png)
+![alt text](../images/task3/affine.png)
 ### 🔹Nguyên lý hoạt động
 Affine là mở rộng của Caesar, sử dụng hàm tuyến tính thay vì chỉ dịch cố định. Mỗi chữ cái được ánh xạ thông qua hai tham số a và b.
 
@@ -115,7 +115,7 @@ Có R = 17,
 - Không gian khóa nhỏ
 
 ## 3. Vigenère
-![alt text](images/vigenère.png)
+![alt text](../images/task3/vigenère.png)
 ### 🔹Nguyên lý hoạt động
 - Là mật mã thay thế đa bảng (polyalphabetic cipher)
 - Sử dụng từ khóa (key) để xác định độ dịch cho từng ký tự
@@ -140,7 +140,7 @@ Có R = 17,
 - Chỉ mang tính lịch sử và học thuật, không dùng trong thực tế.
 
 ## 4. Playfair
-![alt text](images/playfair.png)
+![alt text](../images/task3/playfair.png)
 ### 🔹Nguyên lý hoạt động
 - Là mật mã thay thế đa ký tự (digraph cipher).
 - Sử dụng bảng 5×5 tạo từ khóa (gộp I/J).
@@ -167,7 +167,7 @@ Có R = 17,
 - Không phù hợp cho bảo mật thực tế.
 
 ## 5. Hill
-![alt text](images/hill.png)
+![alt text](../images/task3/hill.png)
 ### 🔹Nguyên lý hoạt động
 - Là mật mã thay thế đa ký tự dựa trên đại số tuyến tính.
 - Sử dụng ma trận khóa vuông kích thước n×n.
