@@ -1,4 +1,4 @@
-![alt text](images/cyber-co.jpg)
+![alt text](images/README.png)
 
 # VSL-Tasks: Tài Liệu Mật Mã Học
 
